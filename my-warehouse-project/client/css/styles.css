@@ -1,0 +1,7 @@
+.hidden {
+	display: none;
+}
+
+.expiring {
+	background-color: #ffe4e4 !important;
+}

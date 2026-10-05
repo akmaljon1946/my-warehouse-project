@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Склад продуктов</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/styles.css">
+</head>
+<body class="container py-4">
+
+<h2 class="mb-4">Склад продуктов</h2>
+
+<!-- Навигация -->
+<div class="mb-4">
+  <button class="btn btn-primary" onclick="showPage('addPage')">➕ Добавить продукт</button>
+  <button class="btn btn-secondary" onclick="showPage('basePage')">📦 База продуктов</button>
+  <button class="btn btn-warning" onclick="loadExpiring()">⚠️ Скоро испортится</button>
+</div>
+
+<!-- СТРАНИЦА ДОБАВЛЕНИЯ -->
+<div id="addPage">
+  <div class="card p-3 mb-4">
+    <h4>Добавить продукт</h4>
+    <div class="row g-2">
+      <div class="col-md-3"><input id="name" class="form-control" placeholder="Название"></div>
+      <div class="col-md-2"><input id="quantity" type="number" class="form-control" placeholder="Кол-во"></div>
+      <div class="col-md-2"><input id="unit" class="form-control" placeholder="Ед. (кг, л...)"></div>
+      <div class="col-md-2"><input id="price" type="number" class="form-control" placeholder="Цена"></div>
+      <div class="col-md-3"><input id="expiryDate" type="date" class="form-control"></div>
+
+      <div class="col-md-3 mt-2">
+        <select id="category" class="form-select">
+          <option value="мясо">Мясо</option>
+          <option value="овощи">Овощи</option>
+          <option value="фрукты">Фрукты</option>
+          <option value="молочка">Молочка</option>
+          <option value="другое">Другое</option>
+        </select>
+      </div>
+
+      <div class="col-md-3 mt-2">
+        <button class="btn btn-success w-100" onclick="addProduct()">Добавить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- СТРАНИЦА БАЗЫ -->
+<div id="basePage" class="hidden">
+  <h3>📦 База продуктов</h3>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped" id="productsTable">
+      <thead class="table-dark">
+        <tr>
+          <th>Название</th>
+          <th>Категория</th>
+          <th>Кол-во</th>
+          <th>Ед.</th>
+          <th>Цена</th>
+          <th>Срок годности</th>
+          <th>Осталось дней</th>
+          <th>Действия</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="expiringOutput" class="mt-3"></div>
+
+<script src="./js/app.js"></script>
+</body>
+</html>
